@@ -1,27 +1,32 @@
 from random import randint
 
 def let_me_guess():
+    """Let user guess the number.
+
+    Try until user gives a proper number.
+
+    :rtype: int
+    :return: given number as int
+    """
     while True:
-        guess = input("Guess the number: ")
         try:
-            guess = float(guess)
+            guess = int(input("Guess the number: "))
             return guess
         except ValueError:
             print("It's not a number")
 
-def check_the_value(number, guess):
-    if guess < number:
-        # print("Too small!")
-        return "Too small!"
-    elif guess > number:
-        # print("Too big!")
-        return "Too big!"
-    elif guess == number:
-        # print("You win!")
-        return "You win!"
+def check_the_value():
+    """Main function"""
+    number = randint(1, 100)
+    print(number)
+    while True:
+        my_guess = let_me_guess()
+        if my_guess < number:
+            print("Too small!")
+        elif my_guess > number:
+            print("Too big!")
+        elif my_guess == number:
+            return "You win!"
 
-number = randint(1, 100)
 
-# my_guess = let_me_guess()
-
-check_the_value(number, let_me_guess())
+print(check_the_value())
